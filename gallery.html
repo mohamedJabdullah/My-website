@@ -12,45 +12,72 @@
       margin: 0;
       padding: 20px;
     }
-    h1 {
-      color: #007bff;
-    }
-    .buttons {
-      margin-top: 20px;
-    }
+
+    h1 { color: #007bff; }
+
+    .buttons { margin-top: 20px; }
     .buttons button {
-      background-color: #007bff;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      margin: 5px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
+      background-color: #007bff; color: white;
+      border: none; padding: 10px 20px;
+      margin: 5px; border-radius: 8px;
+      cursor: pointer; font-weight: bold;
     }
-    .buttons button:hover {
-      background-color: #0056b3;
-    }
+    .buttons button:hover { background-color: #0056b3; }
+
     .gallery {
-      display: none;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
+      display: none; flex-wrap: wrap;
+      justify-content: center; gap: 15px;
       margin-top: 30px;
     }
+
     .gallery img {
-      width: 250px;
-      height: auto;
+      width: 250px; height: auto;
       border-radius: 10px;
       box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      cursor: pointer;
     }
-    a.back {
-      display: inline-block;
-      margin-top: 30px;
-      text-decoration: none;
-      color: #007bff;
-      font-weight: bold;
+
+    .modal {
+      display: none; position: fixed;
+      top: 0; right: 0; bottom: 0; left: 0;
+      background-color: rgba(0,0,0,0.6);
+      justify-content: center; align-items: center;
+      z-index: 9999;
     }
+
+    .modal-content {
+      background-color: #fff;
+      padding: 20px; border-radius: 15px;
+      max-width: 300px; text-align: center;
+      box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    }
+
+    .modal-content img {
+      width: 100%; border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .modal-content input {
+      width: 90%; padding: 8px; margin: 5px 0;
+      border: 1px solid #ccc; border-radius: 6px;
+      font-size: 16px;
+    }
+
+    .send-btn {
+      margin-top: 10px; background-color: #28a745;
+      color: white; border: none; padding: 10px 20px;
+      border-radius: 8px; cursor: pointer;
+    }
+
+    .send-btn:hover { background-color: #1e7e34; }
+
+    .close-btn {
+      margin-top: 10px; background-color: #dc3545;
+      color: white; border: none; padding: 8px 16px;
+      border-radius: 8px; cursor: pointer;
+    }
+
+    .close-btn:hover { background-color: #a90000; }
   </style>
 </head>
 <body>
@@ -64,28 +91,69 @@
   </div>
 
   <div id="personal" class="gallery">
-    <img src="mohamed1.jpg" alt="صورة 1" />
-    <img src="my pro.jpg" alt="صورة 2" />
-    <img src="mohamed.jpg" alt="صورة 3" />
+    <img src="mohamed1.jpg" alt="صورة 1" onclick="openForm('mohamed1.jpg', 'P001')" />
+    <img src="my pro.jpg" alt="صورة 2" onclick="openForm('my pro.jpg', 'P002')" />
+    <img src="mohamed.jpg" alt="صورة 3" onclick="openForm('mohamed.jpg', 'P003')" />
   </div>
 
   <div id="products" class="gallery">
-    <img src="mohamed2.jpg" alt="منتج 1" />
-    <img src="my pro2.jpg" alt="منتج 2" />
+    <img src="mohamed2.jpg" alt="منتج 1" onclick="openForm('mohamed2.jpg', 'PR001')" />
+    <img src="my pro2.jpg" alt="منتج 2" onclick="openForm('my pro2.jpg', 'PR002')" />
   </div>
 
   <div id="work" class="gallery">
-    <img src="m pro3.jpg" alt="شغل 1" />
-    <img src="mohamed3.jpg" alt="شغل 2" />
+    <img src="m pro3.jpg" alt="شغل 1" onclick="openForm('m pro3.jpg', 'W001')" />
+    <img src="mohamed3.jpg" alt="شغل 2" onclick="openForm('mohamed3.jpg', 'W002')" />
   </div>
 
-  <a class="back" href="index.html">⬅ الرجوع للرئيسية</a>
+  <!-- تم حذف رابط الرجوع لأنه سبب مشكلة 404 -->
+
+  <!-- Modal Form -->
+  <div id="formModal" class="modal">
+    <div class="modal-content">
+      <img id="selectedImage" src="" alt="الصورة المختارة" />
+      <input type="text" id="userName" placeholder="اسمك هنا" />
+      <input type="text" id="userPhone" placeholder="رقم هاتفك" />
+      <button class="send-btn" onclick="sendWhatsApp()">شراء</button>
+      <button class="close-btn" onclick="closeModal()">إغلاق</button>
+    </div>
+  </div>
 
   <script>
+    let selectedImageSrc = "";
+    let selectedImageCode = "";
+
     function showGallery(id) {
-      const galleries = document.querySelectorAll('.gallery');
-      galleries.forEach(g => g.style.display = 'none');
+      document.querySelectorAll('.gallery').forEach(g => g.style.display = 'none');
       document.getElementById(id).style.display = 'flex';
+    }
+
+    function openForm(imageSrc, imageCode) {
+      selectedImageSrc = imageSrc;
+      selectedImageCode = imageCode;
+      document.getElementById('selectedImage').src = imageSrc;
+      document.getElementById('formModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('formModal').style.display = 'none';
+    }
+
+    function sendWhatsApp() {
+      const name = document.getElementById('userName').value.trim();
+      const phone = document.getElementById('userPhone').value.trim();
+      if (!name || !phone) {
+        alert("من فضلك املأ الاسم ورقم الهاتف");
+        return;
+      }
+
+      const base = window.location.origin + window.location.pathname.replace(/\/[^\/]*$/, '/');
+      const imageLink = base + selectedImageSrc;
+      const message =
+        `🔢 كود الصورة: ${selectedImageCode}%0A🖼️ اسم الصورة: ${selectedImageSrc}%0A🧑 الاسم: ${name}%0A📞 الهاتف: ${phone}%0A🔗 رابط الصورة: ${imageLink}`;
+      const whatsappNumber = "201095983094";
+      const url = `https://wa.me/${whatsappNumber}?text=${encodeURI(message)}`;
+      window.open(url, "_blank");
     }
   </script>
 
