@@ -43,6 +43,7 @@
       height: auto;
       border-radius: 10px;
       box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      cursor: pointer;
     }
     a.back {
       display: inline-block;
@@ -64,19 +65,19 @@
   </div>
 
   <div id="personal" class="gallery">
-    <img src="mohamed1.jpg" alt="صورة 1" />
-    <img src="my pro.jpg" alt="صورة 2" />
-    <img src="mohamed.jpg" alt="صورة 3" />
+    <img src="mohamed1.jpg" alt="صورة 1" data-name="محمد أحمد" data-phone="01012345678" />
+    <img src="my pro.jpg" alt="صورة 2" data-name="أحمد علي" data-phone="01098765432" />
+    <img src="mohamed.jpg" alt="صورة 3" data-name="سارة محمد" data-phone="01122334455" />
   </div>
 
   <div id="products" class="gallery">
-    <img src="mohamed2.jpg" alt="منتج 1" />
-    <img src="my pro2.jpg" alt="منتج 2" />
+    <img src="mohamed2.jpg" alt="منتج 1" data-name="منتج 1" data-phone="0121112233" />
+    <img src="my pro2.jpg" alt="منتج 2" data-name="منتج 2" data-phone="01234567890" />
   </div>
 
   <div id="work" class="gallery">
-    <img src="m pro3.jpg" alt="شغل 1" />
-    <img src="mohamed3.jpg" alt="شغل 2" />
+    <img src="m pro3.jpg" alt="شغل 1" data-name="شغل أحمد" data-phone="01110002233" />
+    <img src="mohamed3.jpg" alt="شغل 2" data-name="شغل محمد" data-phone="01055667788" />
   </div>
 
   <a class="back" href="index.html">⬅ الرجوع للرئيسية</a>
@@ -87,6 +88,22 @@
       galleries.forEach(g => g.style.display = 'none');
       document.getElementById(id).style.display = 'flex';
     }
+
+    // تشغيل النقر على أي صورة
+    document.querySelectorAll('img').forEach(img => {
+      img.addEventListener('click', () => {
+        const name = img.dataset.name;
+        const phone = img.dataset.phone;
+        const src = img.src;
+
+        const win = window.open("", "_blank");
+        win.document.write(`
+          <h2>${name}</h2>
+          <p>📞 ${phone}</p>
+          <img src="${src}" style="max-width:90%; border-radius:10px;">
+        `);
+      });
+    });
   </script>
 
 </body>
