@@ -13,9 +13,7 @@
       padding: 20px;
     }
 
-    h1 {
-      color: #007bff;
-    }
+    h1 { color: #007bff; }
 
     .buttons { margin-top: 20px; }
     .buttons button {
@@ -37,12 +35,6 @@
       border-radius: 10px;
       box-shadow: 0 0 8px rgba(0,0,0,0.1);
       cursor: pointer;
-    }
-
-    a.back {
-      display: inline-block; margin-top: 30px;
-      text-decoration: none; color: #007bff;
-      font-weight: bold;
     }
 
     .modal {
@@ -114,7 +106,7 @@
     <img src="mohamed3.jpg" alt="شغل 2" onclick="openForm('mohamed3.jpg', 'W002')" />
   </div>
 
-  <a class="back" href="index.html">⬅ الرجوع للرئيسية</a>
+  <!-- تم حذف رابط الرجوع لأنه سبب مشكلة 404 -->
 
   <!-- Modal Form -->
   <div id="formModal" class="modal">
@@ -154,10 +146,13 @@
         alert("من فضلك املأ الاسم ورقم الهاتف");
         return;
       }
-      const imageLink = location.href.replace(/\\/g, "/").replace(/\\/g, "/").replace(/\/[^/]*$/, "/") + selectedImageSrc;
-      const message = `🔢 كود الصورة: ${selectedImageCode}%0A🖼️ اسم الصورة: ${selectedImageSrc}%0A🧑 الاسم: ${name}%0A📞 الهاتف: ${phone}%0A🔗 رابط الصورة: ${imageLink}`;
+
+      const base = window.location.origin + window.location.pathname.replace(/\/[^\/]*$/, '/');
+      const imageLink = base + selectedImageSrc;
+      const message =
+        `🔢 كود الصورة: ${selectedImageCode}%0A🖼️ اسم الصورة: ${selectedImageSrc}%0A🧑 الاسم: ${name}%0A📞 الهاتف: ${phone}%0A🔗 رابط الصورة: ${imageLink}`;
       const whatsappNumber = "201095983094";
-      const url = `https://wa.me/${whatsappNumber}?text=${message}`;
+      const url = `https://wa.me/${whatsappNumber}?text=${encodeURI(message)}`;
       window.open(url, "_blank");
     }
   </script>
