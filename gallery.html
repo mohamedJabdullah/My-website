@@ -65,19 +65,19 @@
   </div>
 
   <div id="personal" class="gallery">
-    <img src="mohamed1.jpg" alt="صورة 1" data-name="محمد أحمد" data-phone="01012345678" />
-    <img src="my pro.jpg" alt="صورة 2" data-name="أحمد علي" data-phone="01098765432" />
-    <img src="mohamed.jpg" alt="صورة 3" data-name="سارة محمد" data-phone="01122334455" />
+    <img src="mohamed1.jpg" alt="صورة 1" onclick="showInfo('محمد أحمد', '01012345678', 'mohamed1.jpg')" />
+    <img src="my pro.jpg" alt="صورة 2" onclick="showInfo('أحمد علي', '01098765432', 'my pro.jpg')" />
+    <img src="mohamed.jpg" alt="صورة 3" onclick="showInfo('سارة محمد', '01122334455', 'mohamed.jpg')" />
   </div>
 
   <div id="products" class="gallery">
-    <img src="mohamed2.jpg" alt="منتج 1" data-name="منتج 1" data-phone="0121112233" />
-    <img src="my pro2.jpg" alt="منتج 2" data-name="منتج 2" data-phone="01234567890" />
+    <img src="mohamed2.jpg" alt="منتج 1" onclick="showInfo('منتج 1', '0121112233', 'mohamed2.jpg')" />
+    <img src="my pro2.jpg" alt="منتج 2" onclick="showInfo('منتج 2', '01234567890', 'my pro2.jpg')" />
   </div>
 
   <div id="work" class="gallery">
-    <img src="m pro3.jpg" alt="شغل 1" data-name="شغل أحمد" data-phone="01110002233" />
-    <img src="mohamed3.jpg" alt="شغل 2" data-name="شغل محمد" data-phone="01055667788" />
+    <img src="m pro3.jpg" alt="شغل 1" onclick="showInfo('شغل أحمد', '01110002233', 'm pro3.jpg')" />
+    <img src="mohamed3.jpg" alt="شغل 2" onclick="showInfo('شغل محمد', '01055667788', 'mohamed3.jpg')" />
   </div>
 
   <a class="back" href="index.html">⬅ الرجوع للرئيسية</a>
@@ -89,21 +89,16 @@
       document.getElementById(id).style.display = 'flex';
     }
 
-    // تشغيل النقر على أي صورة
-    document.querySelectorAll('img').forEach(img => {
-      img.addEventListener('click', () => {
-        const name = img.dataset.name;
-        const phone = img.dataset.phone;
-        const src = img.src;
-
-        const win = window.open("", "_blank");
-        win.document.write(`
+    function showInfo(name, phone, imageSrc) {
+      const win = window.open("", "_blank", "width=400,height=600");
+      win.document.write(`
+        <html dir="rtl"><head><title>${name}</title></head><body style="text-align:center; font-family:Tahoma">
           <h2>${name}</h2>
           <p>📞 ${phone}</p>
-          <img src="${src}" style="max-width:90%; border-radius:10px;">
-        `);
-      });
-    });
+          <img src="${imageSrc}" style="max-width:90%; border-radius:10px;">
+        </body></html>
+      `);
+    }
   </script>
 
 </body>
