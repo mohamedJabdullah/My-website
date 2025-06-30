@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -18,110 +17,75 @@
       color: #007bff;
     }
 
-    .buttons {
-      margin-top: 20px;
-    }
-
+    .buttons { margin-top: 20px; }
     .buttons button {
-      background-color: #007bff;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      margin: 5px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
+      background-color: #007bff; color: white;
+      border: none; padding: 10px 20px;
+      margin: 5px; border-radius: 8px;
+      cursor: pointer; font-weight: bold;
     }
-
-    .buttons button:hover {
-      background-color: #0056b3;
-    }
+    .buttons button:hover { background-color: #0056b3; }
 
     .gallery {
-      display: none;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
+      display: none; flex-wrap: wrap;
+      justify-content: center; gap: 15px;
       margin-top: 30px;
     }
 
     .gallery img {
-      width: 250px;
-      height: auto;
+      width: 250px; height: auto;
       border-radius: 10px;
       box-shadow: 0 0 8px rgba(0,0,0,0.1);
       cursor: pointer;
     }
 
     a.back {
-      display: inline-block;
-      margin-top: 30px;
-      text-decoration: none;
-      color: #007bff;
+      display: inline-block; margin-top: 30px;
+      text-decoration: none; color: #007bff;
       font-weight: bold;
     }
 
     .modal {
-      display: none;
-      position: fixed;
+      display: none; position: fixed;
       top: 0; right: 0; bottom: 0; left: 0;
       background-color: rgba(0,0,0,0.6);
-      justify-content: center;
-      align-items: center;
+      justify-content: center; align-items: center;
       z-index: 9999;
     }
 
     .modal-content {
       background-color: #fff;
-      padding: 20px;
-      border-radius: 15px;
-      max-width: 300px;
-      text-align: center;
+      padding: 20px; border-radius: 15px;
+      max-width: 300px; text-align: center;
       box-shadow: 0 0 10px rgba(0,0,0,0.4);
     }
 
     .modal-content img {
-      width: 100%;
-      border-radius: 10px;
+      width: 100%; border-radius: 10px;
       margin-bottom: 15px;
     }
 
     .modal-content input {
-      width: 90%;
-      padding: 8px;
-      margin: 5px 0;
-      border: 1px solid #ccc;
-      border-radius: 6px;
+      width: 90%; padding: 8px; margin: 5px 0;
+      border: 1px solid #ccc; border-radius: 6px;
       font-size: 16px;
     }
 
     .send-btn {
-      margin-top: 10px;
-      background-color: #28a745;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 8px;
-      cursor: pointer;
+      margin-top: 10px; background-color: #28a745;
+      color: white; border: none; padding: 10px 20px;
+      border-radius: 8px; cursor: pointer;
     }
 
-    .send-btn:hover {
-      background-color: #1e7e34;
-    }
+    .send-btn:hover { background-color: #1e7e34; }
 
     .close-btn {
-      margin-top: 10px;
-      background-color: #dc3545;
-      color: white;
-      border: none;
-      padding: 8px 16px;
-      border-radius: 8px;
-      cursor: pointer;
+      margin-top: 10px; background-color: #dc3545;
+      color: white; border: none; padding: 8px 16px;
+      border-radius: 8px; cursor: pointer;
     }
 
-    .close-btn:hover {
-      background-color: #a90000;
-    }
+    .close-btn:hover { background-color: #a90000; }
   </style>
 </head>
 <body>
@@ -152,6 +116,7 @@
 
   <a class="back" href="index.html">⬅ الرجوع للرئيسية</a>
 
+  <!-- Modal Form -->
   <div id="formModal" class="modal">
     <div class="modal-content">
       <img id="selectedImage" src="" alt="الصورة المختارة" />
@@ -183,9 +148,13 @@
     }
 
     function sendWhatsApp() {
-      const name = document.getElementById('userName').value;
-      const phone = document.getElementById('userPhone').value;
-      const imageLink = location.href.replace(/\/g, "/").replace(/\/[^/]*$/, "/") + selectedImageSrc;
+      const name = document.getElementById('userName').value.trim();
+      const phone = document.getElementById('userPhone').value.trim();
+      if (!name || !phone) {
+        alert("من فضلك املأ الاسم ورقم الهاتف");
+        return;
+      }
+      const imageLink = location.href.replace(/\\/g, "/").replace(/\\/g, "/").replace(/\/[^/]*$/, "/") + selectedImageSrc;
       const message = `🔢 كود الصورة: ${selectedImageCode}%0A🖼️ اسم الصورة: ${selectedImageSrc}%0A🧑 الاسم: ${name}%0A📞 الهاتف: ${phone}%0A🔗 رابط الصورة: ${imageLink}`;
       const whatsappNumber = "201095983094";
       const url = `https://wa.me/${whatsappNumber}?text=${message}`;
