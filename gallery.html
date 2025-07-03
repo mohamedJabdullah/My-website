@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+
+ <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
@@ -21,7 +22,6 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
     }
 
     .site-name {
@@ -44,14 +44,38 @@
       color: #007bff;
     }
 
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .category-btn {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .category-btn:hover {
+      background-color: #0056b3;
+    }
+
     .section {
-      margin: 30px 0;
+      display: none;
+      margin: 20px auto;
     }
 
     .section-title {
       font-size: 22px;
       font-weight: bold;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
     }
 
     .gallery {
@@ -99,47 +123,49 @@
 
   <h1>📸 معرض الصور</h1>
 
-  <!-- الأقسام -->
+  <div class="buttons">
+    <button class="category-btn" onclick="showSection('full')">طقم كامل</button>
+    <button class="category-btn" onclick="showSection('kitchen')">المطابخ</button>
+    <button class="category-btn" onclick="showSection('bathtubs')">البنيوهات</button>
+    <button class="category-btn" onclick="showSection('trees')">الشجر</button>
+  </div>
 
-  <div class="section">
+  <!-- أقسام الصور -->
+
+  <div id="full" class="section">
     <div class="section-title">طقم كامل</div>
     <div class="gallery">
       <div class="photo-card"><img src="1.jpg"><button onclick="order('طقم كامل - 1.jpg')">📲 طلب الصورة</button></div>
-      <div class="photo-card"><img src="2.jpg"><button onclick="order('طقم كامل - 2.jpg')">📲 طلب الصورة</button></div>
-      <div class="photo-card"><img src="3.jpg"><button onclick="order('طقم كامل - 3.jpg')">📲 طلب الصورة</button></div>
-      <div class="photo-card"><img src="4.jpg"><button onclick="order('طقم كامل - 4.jpg')">📲 طلب الصورة</button></div>
-      <div class="photo-card"><img src="5.jpg"><button onclick="order('طقم كامل - 5.jpg')">📲 طلب الصورة</button></div>
-      <div class="photo-card"><img src="6.jpg"><button onclick="order('طقم كامل - 6.jpg')">📲 طلب الصورة</button></div>
-      <div class="photo-card"><img src="7.jpg"><button onclick="order('طقم كامل - 7.jpg')">📲 طلب الصورة</button></div>
-      <div class="photo-card"><img src="8.jpg"><button onclick="order('طقم كامل - 8.jpg')">📲 طلب الصورة</button></div>
-      <div class="photo-card"><img src="9.jpg"><button onclick="order('طقم كامل - 9.jpg')">📲 طلب الصورة</button></div>
-      <div class="photo-card"><img src="10.jpg"><button onclick="order('طقم كامل - 10.jpg')">📲 طلب الصورة</button></div>
+      <!-- كرر حسب الصور المتاحة -->
     </div>
   </div>
 
-  <div class="section">
+  <div id="kitchen" class="section">
     <div class="section-title">المطابخ</div>
     <div class="gallery">
-      <!-- نفس الكروت مع صور مختلفة إن وجدت -->
-      <!-- كرر بنفس الطريقة -->
+      <div class="photo-card"><img src="2.jpg"><button onclick="order('المطابخ - 2.jpg')">📲 طلب الصورة</button></div>
     </div>
   </div>
 
-  <div class="section">
+  <div id="bathtubs" class="section">
     <div class="section-title">البنيوهات</div>
     <div class="gallery">
-      <!-- نفس الكروت -->
+      <div class="photo-card"><img src="3.jpg"><button onclick="order('البنيوهات - 3.jpg')">📲 طلب الصورة</button></div>
     </div>
   </div>
 
-  <div class="section">
+  <div id="trees" class="section">
     <div class="section-title">الشجر</div>
     <div class="gallery">
-      <!-- نفس الكروت -->
+      <div class="photo-card"><img src="4.jpg"><button onclick="order('الشجر - 4.jpg')">📲 طلب الصورة</button></div>
     </div>
   </div>
 
   <script>
+    function toggleLanguage() {
+      alert("سيتم دعم تغيير اللغة لاحقًا.");
+    }
+
     function order(imageName) {
       const message = `مرحباً، أريد طلب الصورة التالية: ${imageName}`;
       const number = "201095983094";
@@ -147,8 +173,10 @@
       window.open(url, "_blank");
     }
 
-    function toggleLanguage() {
-      alert("ميزة تغيير اللغة سيتم تفعيلها قريبًا.");
+    function showSection(id) {
+      document.querySelectorAll('.section').forEach(s => s.style.display = 'none');
+      document.getElementById(id).style.display = 'block';
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
     }
   </script>
 
