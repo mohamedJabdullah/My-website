@@ -29,12 +29,6 @@
       font-size: 20px;
     }
 
-    .header-actions {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
     .language-switch {
       background-color: white;
       color: #007bff;
@@ -45,63 +39,54 @@
       font-weight: bold;
     }
 
-    .language-switch:hover {
-      background-color: #e6e6e6;
-    }
-
-    .quick-whatsapp {
-      background-color: #25D366;
-      color: white;
-      border: none;
-      padding: 6px 12px;
-      cursor: pointer;
-      border-radius: 4px;
-      font-weight: bold;
-    }
-
-    .quick-whatsapp:hover {
-      background-color: #1da851;
-    }
-
     h1 {
       margin: 30px 0 10px;
       color: #007bff;
     }
 
-    .categories {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
+    .section {
+      margin: 30px 0;
+    }
+
+    .section-title {
+      font-size: 22px;
+      font-weight: bold;
       margin-bottom: 20px;
     }
 
-    .category-btn {
-      background-color: #007bff;
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .photo-card {
+      background-color: #fff;
+      padding: 10px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 220px;
+    }
+
+    .photo-card img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .photo-card button {
+      margin-top: 10px;
+      background-color: #25D366;
       color: white;
       border: none;
-      padding: 12px 20px;
-      border-radius: 10px;
+      padding: 8px 12px;
+      border-radius: 6px;
       cursor: pointer;
-      font-size: 16px;
       font-weight: bold;
     }
 
-    .category-btn:hover {
-      background-color: #0056b3;
-    }
-
-    a.back {
-      display: inline-block;
-      margin: 40px auto 20px;
-      text-decoration: none;
-      color: #007bff;
-      font-weight: bold;
-      font-size: 18px;
-    }
-
-    .hidden {
-      display: none;
+    .photo-card button:hover {
+      background-color: #1da851;
     }
   </style>
 </head>
@@ -109,69 +94,62 @@
 
   <header>
     <div class="site-name">أدواتي الصحية</div>
-    <div class="header-actions">
-      <button class="language-switch" onclick="toggleLanguage()">English</button>
-      <button class="quick-whatsapp" onclick="sendOrder('معرض الصور')">
-        📲 <span class="ar">اطلب عبر واتساب</span><span class="en hidden">Order via WhatsApp</span>
-      </button>
-    </div>
+    <button class="language-switch" onclick="toggleLanguage()">English</button>
   </header>
 
-  <h1 class="ar">📸 معرض الصور</h1>
-  <h1 class="en hidden">📸 Photo Gallery</h1>
+  <h1>📸 معرض الصور</h1>
 
-  <!-- العناوين -->
-  <div class="categories">
-    <button class="category-btn" onclick="sendOrder('صور شخصية')">
-      <span class="ar">صور شخصية</span><span class="en hidden">Personal Photos</span>
-    </button>
-    <button class="category-btn" onclick="sendOrder('صور المنتجات')">
-      <span class="ar">صور المنتجات</span><span class="en hidden">Product Photos</span>
-    </button>
-    <button class="category-btn" onclick="sendOrder('صور الشغل')">
-      <span class="ar">صور الشغل</span><span class="en hidden">Work Photos</span>
-    </button>
+  <!-- الأقسام -->
+
+  <div class="section">
+    <div class="section-title">طقم كامل</div>
+    <div class="gallery">
+      <div class="photo-card"><img src="1.jpg"><button onclick="order('طقم كامل - 1.jpg')">📲 طلب الصورة</button></div>
+      <div class="photo-card"><img src="2.jpg"><button onclick="order('طقم كامل - 2.jpg')">📲 طلب الصورة</button></div>
+      <div class="photo-card"><img src="3.jpg"><button onclick="order('طقم كامل - 3.jpg')">📲 طلب الصورة</button></div>
+      <div class="photo-card"><img src="4.jpg"><button onclick="order('طقم كامل - 4.jpg')">📲 طلب الصورة</button></div>
+      <div class="photo-card"><img src="5.jpg"><button onclick="order('طقم كامل - 5.jpg')">📲 طلب الصورة</button></div>
+      <div class="photo-card"><img src="6.jpg"><button onclick="order('طقم كامل - 6.jpg')">📲 طلب الصورة</button></div>
+      <div class="photo-card"><img src="7.jpg"><button onclick="order('طقم كامل - 7.jpg')">📲 طلب الصورة</button></div>
+      <div class="photo-card"><img src="8.jpg"><button onclick="order('طقم كامل - 8.jpg')">📲 طلب الصورة</button></div>
+      <div class="photo-card"><img src="9.jpg"><button onclick="order('طقم كامل - 9.jpg')">📲 طلب الصورة</button></div>
+      <div class="photo-card"><img src="10.jpg"><button onclick="order('طقم كامل - 10.jpg')">📲 طلب الصورة</button></div>
+    </div>
   </div>
 
-  <a class="back" href="index.html">⬅ <span class="ar">الرجوع للرئيسية</span><span class="en hidden">Back to Home</span></a>
+  <div class="section">
+    <div class="section-title">المطابخ</div>
+    <div class="gallery">
+      <!-- نفس الكروت مع صور مختلفة إن وجدت -->
+      <!-- كرر بنفس الطريقة -->
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">البنيوهات</div>
+    <div class="gallery">
+      <!-- نفس الكروت -->
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">الشجر</div>
+    <div class="gallery">
+      <!-- نفس الكروت -->
+    </div>
+  </div>
 
   <script>
-    let currentLang = 'ar';
-
-    function toggleLanguage() {
-      const ar = document.querySelectorAll('.ar');
-      const en = document.querySelectorAll('.en');
-      const html = document.documentElement;
-      const btn = document.querySelector('.language-switch');
-
-      if (currentLang === 'ar') {
-        ar.forEach(e => e.classList.add('hidden'));
-        en.forEach(e => e.classList.remove('hidden'));
-        html.lang = 'en';
-        html.dir = 'ltr';
-        btn.textContent = 'العربية';
-        currentLang = 'en';
-      } else {
-        en.forEach(e => e.classList.add('hidden'));
-        ar.forEach(e => e.classList.remove('hidden'));
-        html.lang = 'ar';
-        html.dir = 'rtl';
-        btn.textContent = 'English';
-        currentLang = 'ar';
-      }
-    }
-
-    function sendOrder(category) {
-      const message = `مرحباً، أريد الاستفسار أو الطلب بخصوص: ${category}`;
+    function order(imageName) {
+      const message = `مرحباً، أريد طلب الصورة التالية: ${imageName}`;
       const number = "201095983094";
       const url = `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
       window.open(url, "_blank");
     }
 
-    window.onload = () => {
-      document.querySelectorAll('.ar').forEach(el => el.classList.remove('hidden'));
-      document.querySelectorAll('.en').forEach(el => el.classList.add('hidden'));
-    };
+    function toggleLanguage() {
+      alert("ميزة تغيير اللغة سيتم تفعيلها قريبًا.");
+    }
   </script>
 
 </body>
