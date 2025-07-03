@@ -32,10 +32,10 @@
     .header-actions {
       display: flex;
       gap: 10px;
+      flex-wrap: wrap;
     }
 
-    .language-switch,
-    .quick-whatsapp {
+    .language-switch {
       background-color: white;
       color: #007bff;
       border: none;
@@ -45,9 +45,22 @@
       font-weight: bold;
     }
 
-    .language-switch:hover,
-    .quick-whatsapp:hover {
+    .language-switch:hover {
       background-color: #e6e6e6;
+    }
+
+    .quick-whatsapp {
+      background-color: #25D366;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      cursor: pointer;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+
+    .quick-whatsapp:hover {
+      background-color: #1da851;
     }
 
     h1 {
@@ -78,26 +91,6 @@
       background-color: #0056b3;
     }
 
-    .whatsapp-box {
-      display: none;
-      margin: 20px auto;
-    }
-
-    .whatsapp-btn {
-      background-color: #25D366;
-      color: white;
-      border: none;
-      padding: 12px 25px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 17px;
-      font-weight: bold;
-    }
-
-    .whatsapp-btn:hover {
-      background-color: #1da851;
-    }
-
     a.back {
       display: inline-block;
       margin: 40px auto 20px;
@@ -118,9 +111,8 @@
     <div class="site-name">أدواتي الصحية</div>
     <div class="header-actions">
       <button class="language-switch" onclick="toggleLanguage()">English</button>
-      <button class="quick-whatsapp" onclick="sendQuickWhatsApp()">
-        <span class="ar">واتساب سريع</span>
-        <span class="en hidden">Quick WhatsApp</span>
+      <button class="quick-whatsapp" onclick="sendOrder('معرض الصور')">
+        📲 <span class="ar">اطلب عبر واتساب</span><span class="en hidden">Order via WhatsApp</span>
       </button>
     </div>
   </header>
@@ -130,27 +122,14 @@
 
   <!-- العناوين -->
   <div class="categories">
-    <button class="category-btn" onclick="showWhatsAppBox('personal')"><span class="ar">صور شخصية</span><span class="en hidden">Personal Photos</span></button>
-    <button class="category-btn" onclick="showWhatsAppBox('products')"><span class="ar">صور المنتجات</span><span class="en hidden">Product Photos</span></button>
-    <button class="category-btn" onclick="showWhatsAppBox('work')"><span class="ar">صور الشغل</span><span class="en hidden">Work Photos</span></button>
-  </div>
-
-  <!-- أزرار واتساب حسب القسم -->
-  <div id="personal" class="whatsapp-box">
-    <button class="whatsapp-btn" onclick="sendOrder('صور شخصية')">
-      📲 <span class="ar">اطلب الآن عبر واتساب</span><span class="en hidden">Order via WhatsApp</span>
+    <button class="category-btn" onclick="sendOrder('صور شخصية')">
+      <span class="ar">صور شخصية</span><span class="en hidden">Personal Photos</span>
     </button>
-  </div>
-
-  <div id="products" class="whatsapp-box">
-    <button class="whatsapp-btn" onclick="sendOrder('صور المنتجات')">
-      📲 <span class="ar">اطلب الآن عبر واتساب</span><span class="en hidden">Order via WhatsApp</span>
+    <button class="category-btn" onclick="sendOrder('صور المنتجات')">
+      <span class="ar">صور المنتجات</span><span class="en hidden">Product Photos</span>
     </button>
-  </div>
-
-  <div id="work" class="whatsapp-box">
-    <button class="whatsapp-btn" onclick="sendOrder('صور الشغل')">
-      📲 <span class="ar">اطلب الآن عبر واتساب</span><span class="en hidden">Order via WhatsApp</span>
+    <button class="category-btn" onclick="sendOrder('صور الشغل')">
+      <span class="ar">صور الشغل</span><span class="en hidden">Work Photos</span>
     </button>
   </div>
 
@@ -182,20 +161,8 @@
       }
     }
 
-    function showWhatsAppBox(id) {
-      document.querySelectorAll('.whatsapp-box').forEach(box => box.style.display = 'none');
-      document.getElementById(id).style.display = 'block';
-    }
-
     function sendOrder(category) {
       const message = `مرحباً، أريد الاستفسار أو الطلب بخصوص: ${category}`;
-      const number = "201095983094";
-      const url = `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
-      window.open(url, "_blank");
-    }
-
-    function sendQuickWhatsApp() {
-      const message = "مرحباً، أريد التواصل معكم بخصوص معرض الصور";
       const number = "201095983094";
       const url = `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
       window.open(url, "_blank");
@@ -209,4 +176,3 @@
 
 </body>
 </html>
-
