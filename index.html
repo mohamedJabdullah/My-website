@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>موقعي الشخصي - أدواتي الصحية</title>
   <style>
     body {
@@ -16,6 +16,8 @@
       background-repeat: no-repeat;
       background-attachment: fixed;
       position: relative;
+      padding-top: 80px;
+      padding-bottom: 80px;
     }
     body::before {
       content: "";
@@ -26,12 +28,16 @@
       z-index: -1;
     }
     header {
-       background-color: #00bcd4; /* أزرق مايي فاتح */
+      background-color: #00bcd4;
       color: white;
       padding: 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 999;
     }
     .site-name {
       font-weight: bold;
@@ -51,7 +57,7 @@
       margin: 0;
       display: flex;
       justify-content: center;
-      background-color: #00acc1; /* أزرق مايي غامق */
+      background-color: #00acc1;
       flex-wrap: wrap;
     }
     nav ul li {
@@ -98,7 +104,21 @@
       color: white;
       text-align: center;
       padding: 15px;
-      position: relative;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      z-index: 999;
+    }
+    .whatsapp-float {
+      position: fixed;
+      bottom: 100px;
+      right: 20px;
+      z-index: 1000;
+      cursor: pointer;
+      transition: transform 0.3s ease-in-out;
+    }
+    .whatsapp-float:hover {
+      transform: scale(1.1);
     }
     .hidden {
       display: none;
@@ -128,19 +148,11 @@
     <p class="ar">مرحباً بك في موقعي الشخصي!</p>
     <p class="en hidden">Welcome to my personal website!</p>
 
-    <!-- من نحن -->
     <div id="about-message" class="message-box">
-      <p class="ar">
-        🌊 <strong>نحن نبتكر الخلاطات المائية</strong> بحب وإتقان، نبدأ من نقطة الصفر وننتهي عند ابتسامة عميل راضٍ.<br>
-        💙 رؤيتنا ليست فقط منتجات تصل إليكم، بل <strong>علاقات تدوم</strong> وثقة تنمو مع كل قطرة.
-      </p>
-      <p class="en hidden">
-        🌊 <strong>We craft water blends</strong> with care and precision — from scratch to satisfaction.<br>
-        💙 Our vision is not just delivering a product, but <strong>building trust and lasting relationships</strong> with every drop.
-      </p>
+      <p class="ar">🌊 <strong>نحن نبتكر الخلاطات المائية</strong> بحب وإتقان...</p>
+      <p class="en hidden">🌊 <strong>We craft water blends</strong> with care and precision...</p>
     </div>
 
-    <!-- الخدمات -->
     <div id="services-message" class="message-box">
       <p class="ar"><strong>🛠 خدماتنا:</strong></p>
       <ul class="ar service-list">
@@ -150,27 +162,22 @@
       </ul>
       <p class="en hidden"><strong>🛠 Our Services:</strong></p>
       <ul class="en hidden service-list">
-        <li>Custom preparation of water-based mixtures to your specifications.</li>
-        <li>Fast and secure delivery across Cairo.</li>
-        <li>Excellent customer service and post-delivery follow-up.</li>
+        <li>Custom preparation of water-based mixtures...</li>
+        <li>Fast and secure delivery...</li>
+        <li>Excellent customer service...</li>
       </ul>
     </div>
 
-    <!-- تواصل معنا -->
     <div id="contact-message" class="message-box">
       <p class="ar"><strong>📞 رقم الهاتف:</strong> 01145587547</p>
       <p class="ar"><strong>📍 العنوان:</strong> إمبابة - القومية</p>
       <p class="ar"><strong>📸 إنستجرام:</strong>
-        <a href="https://www.instagram.com/mohamedahmed0591?igsh=bHQ5b2pzdG1ydjV3" target="_blank" style="color: #007bff; text-decoration: none;">
-          @mohamedahmed0591
-        </a>
+        <a href="https://www.instagram.com/mohamedahmed0591" target="_blank" style="color: #007bff;">@mohamedahmed0591</a>
       </p>
       <p class="en hidden"><strong>📞 Phone:</strong> 01145587547</p>
       <p class="en hidden"><strong>📍 Address:</strong> Imbaba - El Qawmeya</p>
       <p class="en hidden"><strong>📸 Instagram:</strong>
-        <a href="https://www.instagram.com/mohamedahmed0591?igsh=bHQ5b2pzdG1ydjV3" target="_blank" style="color: #007bff; text-decoration: none;">
-          @mohamedahmed0591
-        </a>
+        <a href="https://www.instagram.com/mohamedahmed0591" target="_blank" style="color: #007bff;">@mohamedahmed0591</a>
       </p>
     </div>
   </main>
@@ -180,25 +187,26 @@
     <p class="en hidden">All rights reserved © 2025</p>
   </footer>
 
+  <!-- زر واتساب -->
+  <a href="https://wa.me/201145587547" class="whatsapp-float" target="_blank" title="راسلنا على واتساب">
+    <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="واتساب" />
+  </a>
+
   <script>
     let currentLang = 'ar';
 
     function toggleLanguage() {
-      const arElements = document.querySelectorAll('.ar');
-      const enElements = document.querySelectorAll('.en');
+      document.querySelectorAll('.ar').forEach(el => el.classList.toggle('hidden'));
+      document.querySelectorAll('.en').forEach(el => el.classList.toggle('hidden'));
+
       const html = document.documentElement;
       const button = document.querySelector('.language-switch');
-
       if (currentLang === 'ar') {
-        arElements.forEach(el => el.classList.add('hidden'));
-        enElements.forEach(el => el.classList.remove('hidden'));
         html.lang = 'en';
         html.dir = 'ltr';
         button.textContent = 'العربية';
         currentLang = 'en';
       } else {
-        enElements.forEach(el => el.classList.add('hidden'));
-        arElements.forEach(el => el.classList.remove('hidden'));
         html.lang = 'ar';
         html.dir = 'rtl';
         button.textContent = 'English';
@@ -206,28 +214,16 @@
       }
     }
 
-    function toggleAbout() {
-      showOnly('about-message');
-    }
-
-    function toggleServices() {
-      showOnly('services-message');
-    }
-
-    function toggleContact() {
-      showOnly('contact-message');
-    }
+    function toggleAbout() { showOnly('about-message'); }
+    function toggleServices() { showOnly('services-message'); }
+    function toggleContact() { showOnly('contact-message'); }
 
     function showOnly(idToShow) {
-      const allSections = ['about-message', 'services-message', 'contact-message'];
-      allSections.forEach(id => {
+      ['about-message', 'services-message', 'contact-message'].forEach(id => {
         const el = document.getElementById(id);
-        if (el) el.style.display = (id === idToShow && el.style.display !== 'block') ? 'block' : 'none';
+        el.style.display = (id === idToShow && el.style.display !== 'block') ? 'block' : 'none';
       });
-      const target = document.getElementById(idToShow);
-      if (target && target.style.display === 'block') {
-        target.scrollIntoView({ behavior: 'smooth' });
-      }
+      document.getElementById(idToShow)?.scrollIntoView({ behavior: 'smooth' });
     }
 
     window.onload = () => {
