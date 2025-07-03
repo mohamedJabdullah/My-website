@@ -10,8 +10,8 @@
       margin: 0;
       padding: 0;
       color: #333;
-      background-image: url('tap-water-with-background-vector-2119897.jpg'); /* اسم الصورة */
-     background-size: 75%; /* ✅ حجم أصغر */
+      background-image: url('tap-water-with-background-vector-2119897.jpg');
+      background-size: 75%;
       background-position: center;
       background-repeat: no-repeat;
       background-attachment: fixed;
@@ -22,11 +22,11 @@
       position: fixed;
       top: 0; left: 0;
       width: 100%; height: 100%;
-      background: rgba(255, 255, 255, 0.8); /* طبقة شفافية */
+      background: rgba(255, 255, 255, 0.8);
       z-index: -1;
     }
     header {
-      background-color: #007bff;
+       background-color: #00bcd4; /* أزرق مايي فاتح */
       color: white;
       padding: 20px;
       display: flex;
@@ -51,7 +51,7 @@
       margin: 0;
       display: flex;
       justify-content: center;
-      background-color: #0056b3;
+      background-color: #00acc1; /* أزرق مايي غامق */
       flex-wrap: wrap;
     }
     nav ul li {
@@ -98,6 +98,7 @@
       color: white;
       text-align: center;
       padding: 15px;
+      position: relative;
     }
     .hidden {
       display: none;
@@ -108,9 +109,9 @@
 
   <header>
     <div class="site-name">
-  <span class="ar">أدواتي الصحية</span>
-  <span class="en hidden">My Plumbing Tools</span>
-</div>
+      <span class="ar">أدواتي الصحية</span>
+      <span class="en hidden">My Plumbing Tools</span>
+    </div>
     <button class="language-switch" onclick="toggleLanguage()">English</button>
   </header>
 
@@ -118,13 +119,7 @@
     <ul>
       <li><a onclick="toggleAbout()"><span class="ar">من نحن</span><span class="en hidden">About Us</span></a></li>
       <li><a onclick="toggleServices()"><span class="ar">الخدمات</span><span class="en hidden">Services</span></a></li>
-      <li>
-  <a href="gallery.html">
-    <span class="ar">معرض الصور</span>
-    <span class="en hidden">Gallery</span>
-  </a>
-</li>
-      </li>
+      <li><a href="gallery.html"><span class="ar">معرض الصور</span><span class="en hidden">Gallery</span></a></li>
       <li><a onclick="toggleContact()"><span class="ar">تواصل معنا</span><span class="en hidden">Contact</span></a></li>
     </ul>
   </nav>
@@ -153,7 +148,6 @@
         <li>توصيل سريع وآمن للعملاء في جميع أنحاء القاهرة.</li>
         <li>خدمة عملاء متميزة ومتابعة بعد التسليم.</li>
       </ul>
-
       <p class="en hidden"><strong>🛠 Our Services:</strong></p>
       <ul class="en hidden service-list">
         <li>Custom preparation of water-based mixtures to your specifications.</li>
@@ -171,7 +165,6 @@
           @mohamedahmed0591
         </a>
       </p>
-
       <p class="en hidden"><strong>📞 Phone:</strong> 01145587547</p>
       <p class="en hidden"><strong>📍 Address:</strong> Imbaba - El Qawmeya</p>
       <p class="en hidden"><strong>📸 Instagram:</strong>
