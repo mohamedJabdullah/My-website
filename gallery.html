@@ -1,181 +1,128 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>📸 معرض الصور</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>📸 معرض الصور – أدواتي الصحية</title>
   <style>
-    body {
-      font-family: 'Tahoma', sans-serif;
-      background-color: #f4f4f4;
-      margin: 0;
-      padding: 0;
-      color: #333;
-      text-align: center;
+    body { font-family:Tahoma, sans-serif; background:#f4f4f4; color:#333; text-align:center; margin:0; padding:0; }
+    header { background:#007bff; color:white; padding:15px 20px; display:flex; justify-content:space-between; align-items:center; }
+    .site-name { font-weight:bold; font-size:20px; }
+    .header-actions { display:flex; gap:8px; }
+    .header-actions a, .header-actions button {
+      background:white; color:#007bff; border:none; padding:6px 12px;
+      border-radius:4px; font-weight:bold; cursor:pointer; text-decoration:none;
     }
-
-    header {
-      background-color: #007bff;
-      color: white;
-      padding: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    .header-actions a:hover, .header-actions button:hover { background:#e6e6e6; }
+    h1 { margin:20px 0; color:#007bff; }
+    .buttons { display:flex; justify-content:center; flex-wrap:wrap; gap:12px; margin-bottom:20px; }
+    .buttons button {
+      background:#007bff; color:white; border:none; padding:12px 20px;
+      border-radius:8px; cursor:pointer; font-size:16px; font-weight:bold;
     }
-
-    .site-name {
-      font-weight: bold;
-      font-size: 20px;
-    }
-
-    .language-switch {
-      background-color: white;
-      color: #007bff;
-      border: none;
-      padding: 6px 12px;
-      cursor: pointer;
-      border-radius: 4px;
-      font-weight: bold;
-    }
-
-    h1 {
-      margin: 30px 0 10px;
-      color: #007bff;
-    }
-
-    .buttons {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-bottom: 20px;
-    }
-
-    .category-btn {
-      background-color: #007bff;
-      color: white;
-      border: none;
-      padding: 12px 20px;
-      border-radius: 10px;
-      cursor: pointer;
-      font-size: 16px;
-      font-weight: bold;
-    }
-
-    .category-btn:hover {
-      background-color: #0056b3;
-    }
-
-    .section {
-      display: none;
-      margin: 20px auto;
-    }
-
-    .section-title {
-      font-size: 22px;
-      font-weight: bold;
-      margin-bottom: 15px;
-    }
-
-    .gallery {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-    }
-
-    .photo-card {
-      background-color: #fff;
-      padding: 10px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      width: 220px;
-    }
-
-    .photo-card img {
-      width: 100%;
-      border-radius: 8px;
-    }
-
+    .buttons button:hover { background:#0056b3; }
+    .section { display:none; margin:20px; }
+    .section-title { font-size:22px; font-weight:bold; margin-bottom:15px; }
+    .gallery { display:flex; justify-content:center; flex-wrap:wrap; gap:15px; }
+    .photo-card { background:white; padding:8px; border-radius:10px; box-shadow:0 0 8px rgba(0,0,0,0.1); width:220px; }
+    .photo-card img { width:100%; border-radius:8px; }
     .photo-card button {
-      margin-top: 10px;
-      background-color: #25D366;
-      color: white;
-      border: none;
-      padding: 8px 12px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: bold;
+      margin-top:8px; background:#25D366; color:white; border:none;
+      padding:8px 12px; border-radius:6px; cursor:pointer; font-weight:bold;
     }
-
-    .photo-card button:hover {
-      background-color: #1da851;
-    }
+    .photo-card button:hover { background:#1da851; }
   </style>
 </head>
 <body>
 
   <header>
     <div class="site-name">أدواتي الصحية</div>
-    <button class="language-switch" onclick="toggleLanguage()">English</button>
+    <div class="header-actions">
+      <a href="index.html">الرئيسية</a>
+      <button onclick="toggleLanguage()">English</button>
+    </div>
   </header>
 
   <h1>📸 معرض الصور</h1>
 
   <div class="buttons">
-    <button class="category-btn" onclick="showSection('full')">طقم كامل</button>
-    <button class="category-btn" onclick="showSection('kitchen')">المطابخ</button>
-    <button class="category-btn" onclick="showSection('bathtubs')">البنيوهات</button>
-    <button class="category-btn" onclick="showSection('trees')">الشجر</button>
+    <button onclick="showSection('full')">طقم كامل</button>
+    <button onclick="showSection('kitchen')">المطابخ</button>
+    <button onclick="showSection('bathrooms')">البانيوهات</button>
+    <button onclick="showSection('trees')">الشجر</button>
   </div>
-
-  <!-- أقسام الصور -->
 
   <div id="full" class="section">
     <div class="section-title">طقم كامل</div>
     <div class="gallery">
-      <div class="photo-card"><img src="1.jpg"><button onclick="order('طقم كامل - 1.jpg')">📲 طلب الصورة</button></div>
-      <!-- كرر حسب الصور المتاحة -->
+      <div class="photo-card"><img src="full1.jpg" alt="">
+        <button onclick="order('full1.jpg')">📲 طلب الصورة</button></div>
+      <div class="photo-card"><img src="full2.jpg" alt="">
+        <button onclick="order('full2.jpg')">📲 طلب الصورة</button></div>
+      <div class="photo-card"><img src="full3.jpg" alt="">
+        <button onclick="order('full3.jpg')">📲 طلب الصورة</button></div>
+      <div class="photo-card"><img src="full4.jpg" alt="">
+        <button onclick="order('full4.jpg')">📲 طلب الصورة</button></div>
     </div>
   </div>
 
   <div id="kitchen" class="section">
     <div class="section-title">المطابخ</div>
     <div class="gallery">
-      <div class="photo-card"><img src="2.jpg"><button onclick="order('المطابخ - 2.jpg')">📲 طلب الصورة</button></div>
+      <div class="photo-card"><img src="kitchen1.jpg" alt="">
+        <button onclick="order('kitchen1.jpg')">📲 طلب الصورة</button></div>
+      <div class="photo-card"><img src="kitchen2.jpg" alt="">
+        <button onclick="order('kitchen2.jpg')">📲 طلب الصورة</button></div>
+      <div class="photo-card"><img src="kitchen3.jpg" alt="">
+        <button onclick="order('kitchen3.jpg')">📲 طلب الصورة</button></div>
+      <div class="photo-card"><img src="kitchen4.jpg" alt="">
+        <button onclick="order('kitchen4.jpg')">📲 طلب الصورة</button></div>
     </div>
   </div>
 
-  <div id="bathtubs" class="section">
-    <div class="section-title">البنيوهات</div>
+  <div id="bathrooms" class="section">
+    <div class="section-title">البانيوهات</div>
     <div class="gallery">
-      <div class="photo-card"><img src="3.jpg"><button onclick="order('البنيوهات - 3.jpg')">📲 طلب الصورة</button></div>
+      <div class="photo-card"><img src="bath1.jpg" alt="">
+        <button onclick="order('bath1.jpg')">📲 طلب الصورة</button></div>
+      <div class="photo-card"><img src="bath2.jpg" alt="">
+        <button onclick="order('bath2.jpg')">📲 طلب الصورة</button></div>
+      <div class="photo-card"><img src="bath3.jpg" alt="">
+        <button onclick="order('bath3.jpg')">📲 طلب الصورة</button></div>
+      <div class="photo-card"><img src="bath4.jpg" alt="">
+        <button onclick="order('bath4.jpg')">📲 طلب الصورة</button></div>
     </div>
   </div>
 
   <div id="trees" class="section">
     <div class="section-title">الشجر</div>
     <div class="gallery">
-      <div class="photo-card"><img src="4.jpg"><button onclick="order('الشجر - 4.jpg')">📲 طلب الصورة</button></div>
+      <div class="photo-card"><img src="tree1.jpg" alt="">
+        <button onclick="order('tree1.jpg')">📲 طلب الصورة</button></div>
+      <div class="photo-card"><img src="tree2.jpg" alt="">
+        <button onclick="order('tree2.jpg')">📲 طلب الصورة</button></div>
+      <div class="photo-card"><img src="tree3.jpg" alt="">
+        <button onclick="order('tree3.jpg')">📲 طلب الصورة</button></div>
+      <div class="photo-card"><img src="tree4.jpg" alt="">
+        <button onclick="order('tree4.jpg')">📲 طلب الصورة</button></div>
     </div>
   </div>
 
   <script>
-    function toggleLanguage() {
-      alert("سيتم دعم تغيير اللغة لاحقًا.");
+    function showSection(id) {
+      document.querySelectorAll('.section').forEach(sec => sec.style.display = 'none');
+      document.getElementById(id).style.display = 'block';
+      document.getElementById(id).scrollIntoView({ behavior:'smooth' });
     }
 
-    function order(imageName) {
-      const message = `مرحباً، أريد طلب الصورة التالية: ${imageName}`;
-      const number = "201095983094";
-      const url = `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
+    function order(img) {
+      const msg = `مرحباً، أريد طلب الصورة: ${img}`;
+      const url = `https://wa.me/201095983094?text=${encodeURIComponent(msg)}`;
       window.open(url, "_blank");
     }
 
-    function showSection(id) {
-      document.querySelectorAll('.section').forEach(s => s.style.display = 'none');
-      document.getElementById(id).style.display = 'block';
-      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    function toggleLanguage() {
+      alert("ميزة تغيير اللغة هتضاف لاحقاً 🌍");
     }
   </script>
 
