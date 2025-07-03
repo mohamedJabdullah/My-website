@@ -8,39 +8,76 @@
     body {
       font-family: 'Tahoma', sans-serif;
       background-color: #f4f4f4;
-      text-align: center;
       margin: 0;
+      padding: 0;
+      color: #333;
+      text-align: center;
+    }
+
+    header {
+      background-color: #007bff;
+      color: white;
       padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .site-name {
+      font-weight: bold;
+      font-size: 20px;
+    }
+
+    .language-switch {
+      background-color: white;
+      color: #007bff;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      border-radius: 4px;
     }
 
     h1 {
+      margin: 30px 0 10px;
       color: #007bff;
     }
 
-    .section {
-      margin: 30px auto;
-      padding: 20px;
-      width: fit-content;
-      background-color: #ffffff;
-      border: 2px dashed #007bff;
+    .categories {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .category-btn {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 12px 20px;
       border-radius: 10px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
     }
 
-    .section-title {
-      font-size: 22px;
-      font-weight: bold;
-      color: #007bff;
-      margin-bottom: 15px;
+    .category-btn:hover {
+      background-color: #0056b3;
+    }
+
+    .whatsapp-box {
+      display: none;
+      margin: 20px auto;
     }
 
     .whatsapp-btn {
       background-color: #25D366;
       color: white;
       border: none;
-      padding: 10px 20px;
+      padding: 12px 25px;
       border-radius: 8px;
       cursor: pointer;
-      font-size: 16px;
+      font-size: 17px;
       font-weight: bold;
     }
 
@@ -50,42 +87,98 @@
 
     a.back {
       display: inline-block;
-      margin-top: 40px;
+      margin: 40px auto 20px;
       text-decoration: none;
       color: #007bff;
       font-weight: bold;
       font-size: 18px;
     }
+
+    .hidden {
+      display: none;
+    }
   </style>
 </head>
 <body>
 
-  <h1>📸 معرض الصور</h1>
+  <header>
+    <div class="site-name">أدواتي الصحية</div>
+    <button class="language-switch" onclick="toggleLanguage()">English</button>
+  </header>
 
-  <div class="section">
-    <div class="section-title">صور شخصية</div>
-    <button class="whatsapp-btn" onclick="sendOrder('صور شخصية')">اطلب الآن عبر واتساب</button>
+  <h1 class="ar">📸 معرض الصور</h1>
+  <h1 class="en hidden">📸 Photo Gallery</h1>
+
+  <!-- العناوين -->
+  <div class="categories">
+    <button class="category-btn" onclick="showWhatsAppBox('personal')"><span class="ar">صور شخصية</span><span class="en hidden">Personal Photos</span></button>
+    <button class="category-btn" onclick="showWhatsAppBox('products')"><span class="ar">صور المنتجات</span><span class="en hidden">Product Photos</span></button>
+    <button class="category-btn" onclick="showWhatsAppBox('work')"><span class="ar">صور الشغل</span><span class="en hidden">Work Photos</span></button>
   </div>
 
-  <div class="section">
-    <div class="section-title">صور المنتجات</div>
-    <button class="whatsapp-btn" onclick="sendOrder('صور المنتجات')">اطلب الآن عبر واتساب</button>
+  <!-- أزرار واتساب -->
+  <div id="personal" class="whatsapp-box">
+    <button class="whatsapp-btn" onclick="sendOrder('صور شخصية')">
+      📲 <span class="ar">اطلب الآن عبر واتساب</span><span class="en hidden">Order via WhatsApp</span>
+    </button>
   </div>
 
-  <div class="section">
-    <div class="section-title">صور الشغل</div>
-    <button class="whatsapp-btn" onclick="sendOrder('صور الشغل')">اطلب الآن عبر واتساب</button>
+  <div id="products" class="whatsapp-box">
+    <button class="whatsapp-btn" onclick="sendOrder('صور المنتجات')">
+      📲 <span class="ar">اطلب الآن عبر واتساب</span><span class="en hidden">Order via WhatsApp</span>
+    </button>
   </div>
 
-  <a class="back" href="index.html">⬅ الرجوع للرئيسية</a>
+  <div id="work" class="whatsapp-box">
+    <button class="whatsapp-btn" onclick="sendOrder('صور الشغل')">
+      📲 <span class="ar">اطلب الآن عبر واتساب</span><span class="en hidden">Order via WhatsApp</span>
+    </button>
+  </div>
+
+  <a class="back" href="index.html">⬅ <span class="ar">الرجوع للرئيسية</span><span class="en hidden">Back to Home</span></a>
 
   <script>
+    let currentLang = 'ar';
+
+    function toggleLanguage() {
+      const ar = document.querySelectorAll('.ar');
+      const en = document.querySelectorAll('.en');
+      const html = document.documentElement;
+      const btn = document.querySelector('.language-switch');
+
+      if (currentLang === 'ar') {
+        ar.forEach(e => e.classList.add('hidden'));
+        en.forEach(e => e.classList.remove('hidden'));
+        html.lang = 'en';
+        html.dir = 'ltr';
+        btn.textContent = 'العربية';
+        currentLang = 'en';
+      } else {
+        en.forEach(e => e.classList.add('hidden'));
+        ar.forEach(e => e.classList.remove('hidden'));
+        html.lang = 'ar';
+        html.dir = 'rtl';
+        btn.textContent = 'English';
+        currentLang = 'ar';
+      }
+    }
+
+    function showWhatsAppBox(id) {
+      document.querySelectorAll('.whatsapp-box').forEach(box => box.style.display = 'none');
+      document.getElementById(id).style.display = 'block';
+    }
+
     function sendOrder(category) {
       const message = `مرحباً، أريد الاستفسار أو الطلب بخصوص: ${category}`;
-      const whatsappNumber = "201095983094"; // ضع رقمك هنا بدون "+" مثلاً 201234567890
-      const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+      const number = "201095983094";
+      const url = `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
       window.open(url, "_blank");
     }
+
+    window.onload = () => {
+      document.querySelectorAll('.ar').forEach(el => el.classList.remove('hidden'));
+      document.querySelectorAll('.en').forEach(el => el.classList.add('hidden'));
+    };
   </script>
 
 </body>
