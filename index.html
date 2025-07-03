@@ -5,12 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>موقعي الشخصي - أدواتي الصحية</title>
   <style>
-    body {
+        body {
       font-family: 'Tahoma', sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f4f4f4;
       color: #333;
+      background-image: url('tap-water-with-background-vector-2119897.jpg'); /* اسم الصورة */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(255, 255, 255, 0.8); /* طبقة شفافية */
+      z-index: -1;
+    }
+
     }
     header {
       background-color: #007bff;
