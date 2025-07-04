@@ -11,13 +11,10 @@
       padding: 0;
       color: #333;
       background-image: url('WhatsApp Image 2025-07-04 at 20.52.19_e68ee4ac.jpg');
-      background-size: 80;
+      background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
       background-attachment: fixed;
-      padding-top: 100px;
-      padding-bottom: 80px;
-      position: relative;
     }
 
     body::before {
@@ -25,7 +22,7 @@
       position: fixed;
       top: 0; left: 0;
       width: 100%; height: 100%;
-      background: rgba(255, 255, 255, 0.8);
+      background: rgba(255, 255, 255, 0.85);
       z-index: -1;
     }
 
@@ -40,13 +37,11 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      position: relative;
     }
 
     .site-name {
       font-weight: bold;
       font-size: 20px;
-      text-align: center;
     }
 
     .language-switch {
@@ -60,6 +55,10 @@
       padding: 5px 10px;
       cursor: pointer;
       border-radius: 4px;
+    }
+
+    nav {
+      margin-top: 80px;
     }
 
     nav ul {
@@ -88,7 +87,7 @@
     }
 
     main {
-      padding: 30px;
+      padding: 40px 20px 80px;
       text-align: center;
     }
 
@@ -152,10 +151,7 @@
 
   <header>
     <button class="language-switch" onclick="toggleLanguage()">English</button>
-    <div class="site-name">
-      <span class="ar">الورشة الفنية</span>
-      <span class="en hidden">Technical Workshop</span>
-    </div>
+    <div class="site-name">الورشة الفنية</div>
   </header>
 
   <nav>
@@ -210,7 +206,6 @@
     <p class="en hidden">All rights reserved © 2025</p>
   </footer>
 
-  <!-- زر واتساب -->
   <a href="https://wa.me/201145587547" class="whatsapp-float" target="_blank" title="راسلنا على واتساب">
     <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="واتساب" />
   </a>
