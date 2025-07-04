@@ -34,18 +34,17 @@
       color: white;
       padding: 20px;
       display: flex;
-      justify-content: flex-end;
       align-items: center;
       position: fixed;
       top: 0;
       width: 100%;
       z-index: 999;
-      gap: 20px;
     }
 
     .site-name {
       font-weight: bold;
       font-size: 20px;
+      margin-right: 20px;
     }
 
     .language-switch {
@@ -55,7 +54,11 @@
       padding: 5px 10px;
       cursor: pointer;
       border-radius: 4px;
-      margin-right: auto; /* يجعل الزر في أقصى اليسار */
+      margin-left: auto;
+    }
+
+    header .site-name, header .language-switch {
+      direction: ltr !important;
     }
 
     nav ul {
@@ -147,11 +150,11 @@
 <body>
 
   <header>
-    <button class="language-switch" onclick="toggleLanguage()">English</button>
     <div class="site-name">
       <span class="ar">الورشة الفنية</span>
       <span class="en hidden">Technical Workshop</span>
     </div>
+    <button class="language-switch" onclick="toggleLanguage()">English</button>
   </header>
 
   <nav>
@@ -206,6 +209,7 @@
     <p class="en hidden">All rights reserved © 2025</p>
   </footer>
 
+  <!-- زر واتساب -->
   <a href="https://wa.me/201145587547" class="whatsapp-float" target="_blank" title="راسلنا على واتساب">
     <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="واتساب" />
   </a>
