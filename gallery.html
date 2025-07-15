@@ -3,107 +3,195 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>📸 معرض الصور – أدواتي الصحية</title>
+  <title>  معرض الصور – الورشة الفنية </title>
   <style>
-    body { font-family: Tahoma, sans-serif; background: #f4f4f4; color: #333; text-align: center; margin: 0; padding: 0; }
-    header { background: #007bff; color: white; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
-    .site-name { font-weight: bold; font-size: 20px; }
-    .header-actions { display: flex; gap: 8px; }
+    body {
+      font-family: Tahoma, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-image: url('header-background.jpg');
+      background-size: cover;
+      background-attachment: fixed;
+      color: #333;
+    }
+
+    header {
+      background-color: #00bcd4;
+      color: white;
+      padding: 20px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 999;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .site-name {
+      font-weight: bold;
+      font-size: 20px;
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 8px;
+    }
+
     .header-actions a, .header-actions button {
-      background: white; color: #007bff; border: none; padding: 6px 12px;
-      border-radius: 4px; font-weight: bold; cursor: pointer; text-decoration: none;
+      background: white;
+      color: #00bcd4;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
     }
-    .header-actions a:hover, .header-actions button:hover { background: #e6e6e6; }
-    h1 { margin: 20px 0; color: #007bff; }
-    .buttons { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; }
+
+    main {
+      padding-top: 100px;
+      padding-bottom: 40px;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 20px 0;
+      color: #00bcd4;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
     .buttons button {
-      background: #007bff; color: white; border: none; padding: 12px 20px;
-      border-radius: 8px; cursor: pointer; font-size: 16px; font-weight: bold;
+      background: #00bcd4;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
-    .buttons button:hover { background: #0056b3; }
-    .section { display: none; margin: 20px; }
-    .section-title { font-size: 22px; font-weight: bold; margin-bottom: 15px; }
-    .gallery { display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; }
-    .photo-card { background: white; padding: 8px; border-radius: 10px; box-shadow: 0 0 8px rgba(0,0,0,0.1); width: 220px; }
-    .photo-card img { width: 100%; border-radius: 8px; }
+
+    .btn-text {
+      font-weight: bold;
+    }
+
+    .section {
+      display: none;
+      margin: 20px;
+    }
+
+    .gallery {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .photo-card {
+      background: white;
+      padding: 8px;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      width: 220px;
+    }
+
+    .photo-card img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
     .photo-card button {
-      margin-top: 8px; background: #25D366; color: white; border: none;
-      padding: 8px 12px; border-radius: 6px; cursor: pointer; font-weight: bold;
+      margin-top: 8px;
+      background: #25D366;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
     }
-    .photo-card button:hover { background: #1da851; }
+
     .hidden { display: none; }
   </style>
 </head>
 <body>
-
   <header>
-    <div class="site-name">أدواتي الصحية</div>
+    <div class="site-name" id="siteName"> الورشة الفنية </div>
     <div class="header-actions">
       <a href="index.html" id="home-link">الرئيسية</a>
       <button onclick="toggleLanguage()" id="langBtn">English</button>
     </div>
   </header>
 
-  <h1 id="page-title">📸 معرض الصور</h1>
+  <main>
+    <h1 id="page-title">📸 معرض الصور</h1>
 
-  <div class="buttons">
-    <button onclick="showSection('full')" id="btn-full">طقم كامل</button>
-    <button onclick="showSection('kitchen')" id="btn-kitchen">المطابخ</button>
-    <button onclick="showSection('bathrooms')" id="btn-bath">البانيوهات</button>
-    <button onclick="showSection('trees')" id="btn-trees">الشجر</button>
-  </div>
-
-  <div id="full" class="section">
-    <div class="section-title" id="title-full">طقم كامل</div>
-    <div class="gallery">
-      <div class="photo-card"><img src="full1.jpg"><button onclick="order('full1.jpg')">📲 <span class="order-text">طلب الصورة</span></button></div>
-      <div class="photo-card"><img src="full2.jpg"><button onclick="order('full2.jpg')">📲 <span class="order-text">طلب الصورة</span></button></div>
+    <div class="buttons">
+      <button onclick="showSection('full')" id="btn-full">🧰 <span class="btn-text">طقم كامل</span></button>
+      <button onclick="showSection('kitchen')" id="btn-kitchen">🍽️ <span class="btn-text">المطابخ</span></button>
+      <button onclick="showSection('bath')" id="btn-bath">🛁 <span class="btn-text">البانيوهات</span></button>
+      <button onclick="showSection('trees')" id="btn-trees">🌳 <span class="btn-text">الشجر</span></button>
     </div>
-  </div>
 
-  <div id="kitchen" class="section">
-    <div class="section-title" id="title-kitchen">المطابخ</div>
-    <div class="gallery">
-      <div class="photo-card"><img src="kitchen1.jpg"><button onclick="order('kitchen1.jpg')">📲 <span class="order-text">طلب الصورة</span></button></div>
-      <div class="photo-card"><img src="kitchen2.jpg"><button onclick="order('kitchen2.jpg')">📲 <span class="order-text">طلب الصورة</span></button></div>
+    <div id="full" class="section">
+      <h2 id="title-full">طقم كامل</h2>
+      <div class="gallery">
+        <div class="photo-card"><img src="full1.jpg"><button onclick="order('full1.jpg')"><span class="order-text">طلب الصورة</span></button></div>
+        <div class="photo-card"><img src="full2.jpg"><button onclick="order('full2.jpg')"><span class="order-text">طلب الصورة</span></button></div>
+      </div>
     </div>
-  </div>
 
-  <div id="bathrooms" class="section">
-    <div class="section-title" id="title-bath">البانيوهات</div>
-    <div class="gallery">
-      <div class="photo-card"><img src="bath1.jpg"><button onclick="order('bath1.jpg')">📲 <span class="order-text">طلب الصورة</span></button></div>
-      <div class="photo-card"><img src="bath2.jpg"><button onclick="order('bath2.jpg')">📲 <span class="order-text">طلب الصورة</span></button></div>
+    <div id="kitchen" class="section">
+      <h2 id="title-kitchen">المطابخ</h2>
+      <div class="gallery">
+        <div class="photo-card"><img src="kitchen1.jpg"><button onclick="order('kitchen1.jpg')"><span class="order-text">طلب الصورة</span></button></div>
+        <div class="photo-card"><img src="kitchen2.jpg"><button onclick="order('kitchen2.jpg')"><span class="order-text">طلب الصورة</span></button></div>
+      </div>
     </div>
-  </div>
 
-  <div id="trees" class="section">
-    <div class="section-title" id="title-trees">الشجر</div>
-    <div class="gallery">
-      <div class="photo-card"><img src="tree1.jpg"><button onclick="order('tree1.jpg')">📲 <span class="order-text">طلب الصورة</span></button></div>
-      <div class="photo-card"><img src="tree2.jpg"><button onclick="order('tree2.jpg')">📲 <span class="order-text">طلب الصورة</span></button></div>
+    <div id="bath" class="section">
+      <h2 id="title-bath">البانيوهات</h2>
+      <div class="gallery">
+        <div class="photo-card"><img src="bath1.jpg"><button onclick="order('bath1.jpg')"><span class="order-text">طلب الصورة</span></button></div>
+        <div class="photo-card"><img src="bath2.jpg"><button onclick="order('bath2.jpg')"><span class="order-text">طلب الصورة</span></button></div>
+      </div>
     </div>
-  </div>
+
+    <div id="trees" class="section">
+      <h2 id="title-trees">الشجر</h2>
+      <div class="gallery">
+        <div class="photo-card"><img src="tree1.jpg"><button onclick="order('tree1.jpg')"><span class="order-text">طلب الصورة</span></button></div>
+        <div class="photo-card"><img src="tree2.jpg"><button onclick="order('tree2.jpg')"><span class="order-text">طلب الصورة</span></button></div>
+      </div>
+    </div>
+  </main>
 
   <script>
     let currentLang = 'ar';
-
     const translations = {
       ar: {
-        title: '📸 معرض الصور',
-        home: 'الرئيسية',
-        langBtn: 'English',
-        btns: ['طقم كامل', 'المطابخ', 'البانيوهات', 'الشجر'],
-        sectionTitles: ['طقم كامل', 'المطابخ', 'البانيوهات', 'الشجر'],
-        order: 'طلب الصورة'
+        title: '📸 معرض الصور', home: 'الرئيسية', lang: 'English',
+        btns: ['🧰 طقم كامل', '🍽️ المطابخ', '🛁 البانيوهات', '🌳 الشجر'],
+        sections: ['طقم كامل', 'المطابخ', 'البانيوهات', 'الشجر'],
+        order: 'طلب الصورة', siteName: 'أدواتي الصحية'
       },
       en: {
-        title: '📸 Photo Gallery',
-        home: 'Home',
-        langBtn: 'العربية',
-        btns: ['Full Set', 'Kitchens', 'Bathtubs', 'Trees'],
-        sectionTitles: ['Full Set', 'Kitchens', 'Bathtubs', 'Trees'],
-        order: 'Order Image'
+        title: '📸 Photo Gallery', home: 'Home', lang: 'العربية',
+        btns: ['🧰 Full Set', '🍽️ Kitchens', '🛁 Bathtubs', '🌳 Trees'],
+        sections: ['Full Set', 'Kitchens', 'Bathtubs', 'Trees'],
+        order: 'Order Image', siteName: 'My Sanitary Tools'
       }
     };
 
@@ -113,20 +201,20 @@
 
       document.documentElement.lang = currentLang;
       document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
-
       document.getElementById('page-title').textContent = t.title;
       document.getElementById('home-link').textContent = t.home;
-      document.getElementById('langBtn').textContent = t.langBtn;
+      document.getElementById('langBtn').textContent = t.lang;
+      document.getElementById('siteName').textContent = t.siteName;
 
-      document.getElementById('btn-full').textContent = t.btns[0];
-      document.getElementById('btn-kitchen').textContent = t.btns[1];
-      document.getElementById('btn-bath').textContent = t.btns[2];
-      document.getElementById('btn-trees').textContent = t.btns[3];
+      document.getElementById('btn-full').innerHTML = `${t.btns[0]}`;
+      document.getElementById('btn-kitchen').innerHTML = `${t.btns[1]}`;
+      document.getElementById('btn-bath').innerHTML = `${t.btns[2]}`;
+      document.getElementById('btn-trees').innerHTML = `${t.btns[3]}`;
 
-      document.getElementById('title-full').textContent = t.sectionTitles[0];
-      document.getElementById('title-kitchen').textContent = t.sectionTitles[1];
-      document.getElementById('title-bath').textContent = t.sectionTitles[2];
-      document.getElementById('title-trees').textContent = t.sectionTitles[3];
+      document.getElementById('title-full').textContent = t.sections[0];
+      document.getElementById('title-kitchen').textContent = t.sections[1];
+      document.getElementById('title-bath').textContent = t.sections[2];
+      document.getElementById('title-trees').textContent = t.sections[3];
 
       document.querySelectorAll('.order-text').forEach(el => el.textContent = t.order);
     }
@@ -137,12 +225,11 @@
       document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
     }
 
-    function order(img) {
-      const msg = `مرحباً، أريد طلب الصورة: ${img}`;
+    function order(imageName) {
+      const msg = currentLang === 'ar' ? `مرحباً، أريد طلب الصورة: ${imageName}` : `Hello, I want to order the image: ${imageName}`;
       const url = `https://wa.me/201095983094?text=${encodeURIComponent(msg)}`;
       window.open(url, '_blank');
     }
   </script>
-
 </body>
 </html>
