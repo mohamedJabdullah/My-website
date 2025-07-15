@@ -11,11 +11,12 @@
       padding: 0;
       color: #333;
       position: relative;
-      background-image: url('صوره ف المعرض.jpg');
-      background-size:85%;
+      background-image: url('صوره%20ف%20المعرض.jpg');
+      background-size: 85%;
       background-attachment: fixed;
       background-position: center;
     }
+
     body::before {
       content: "";
       position: fixed;
@@ -23,28 +24,31 @@
       background: rgba(255, 255, 255, 0.75);
       z-index: -1;
     }
+
     header {
       background-color: #00bcd4;
       color: white;
-      padding: 20px;
+      padding: 20px 30px;
       position: fixed;
       top: 0;
-      width: 100%;
+      width: calc(100% - 60px);
       z-index: 999;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
     }
+
     .site-name {
       font-weight: bold;
       font-size: 20px;
     }
+
     .header-actions {
       display: flex;
-      gap: 8px;
-      margin-inline-start: 12px;
+      gap: 10px;
     }
+
     .header-actions a, .header-actions button {
       background: white;
       color: #00bcd4;
@@ -54,16 +58,21 @@
       font-weight: bold;
       cursor: pointer;
       text-decoration: none;
+      white-space: nowrap;
     }
+
     main {
-      padding-top: 140px;
+      padding-top: 160px;
       padding-bottom: 40px;
       text-align: center;
     }
+
     h1 {
-      margin: 20px 0;
+      margin: 20px 0 40px;
       color: #00bcd4;
+      font-size: 28px;
     }
+
     .buttons {
       display: flex;
       justify-content: center;
@@ -71,6 +80,7 @@
       gap: 12px;
       margin-bottom: 20px;
     }
+
     .buttons button {
       background: #00bcd4;
       color: white;
@@ -81,27 +91,38 @@
       font-size: 16px;
       font-weight: bold;
     }
+
     .section {
       display: none;
       margin: 20px;
     }
+
     .gallery {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
       gap: 15px;
     }
+
     .photo-card {
       background: white;
       padding: 8px;
       border-radius: 10px;
       box-shadow: 0 0 8px rgba(0,0,0,0.1);
-      width: 220px;
+      width: 200px;
     }
+
     .photo-card img {
       width: 100%;
       border-radius: 8px;
     }
+
+    .photo-number {
+      font-size: 14px;
+      color: #666;
+      margin-top: 6px;
+    }
+
     .photo-card button {
       margin-top: 8px;
       background: #25D366;
@@ -111,11 +132,6 @@
       border-radius: 6px;
       cursor: pointer;
       font-weight: bold;
-    }
-    .photo-number {
-      font-size: 14px;
-      color: #666;
-      margin-top: 6px;
     }
   </style>
 </head>
@@ -206,6 +222,7 @@
     function toggleLanguage() {
       currentLang = currentLang === 'ar' ? 'en' : 'ar';
       const t = translations[currentLang];
+
       document.documentElement.lang = currentLang;
       document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
       document.getElementById('page-title').textContent = t.title;
