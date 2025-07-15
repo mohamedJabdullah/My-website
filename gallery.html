@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>  معرض الصور – الورشة الفنية </title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>📸 معرض الصور – الورشة الفنية</title>
   <style>
     body {
       font-family: Tahoma, sans-serif;
       margin: 0;
       padding: 0;
-      background-image: url('header-background.jpg');
+      background-image: url('header-background.jpg'); /* ← ضع رابط الخلفية هنا */
       background-size: cover;
       background-attachment: fixed;
       color: #333;
@@ -78,9 +78,6 @@
       cursor: pointer;
       font-size: 16px;
       font-weight: bold;
-      display: flex;
-      align-items: center;
-      gap: 6px;
     }
 
     .btn-text {
@@ -128,7 +125,7 @@
 </head>
 <body>
   <header>
-    <div class="site-name" id="siteName"> الورشة الفنية </div>
+    <div class="site-name" id="siteName">الورشة الفنية</div>
     <div class="header-actions">
       <a href="index.html" id="home-link">الرئيسية</a>
       <button onclick="toggleLanguage()" id="langBtn">English</button>
@@ -139,14 +136,14 @@
     <h1 id="page-title">📸 معرض الصور</h1>
 
     <div class="buttons">
-      <button onclick="showSection('full')" id="btn-full">🧰 <span class="btn-text">طقم كامل</span></button>
-      <button onclick="showSection('kitchen')" id="btn-kitchen">🍽️ <span class="btn-text">المطابخ</span></button>
-      <button onclick="showSection('bath')" id="btn-bath">🛁 <span class="btn-text">البانيوهات</span></button>
-      <button onclick="showSection('trees')" id="btn-trees">🌳 <span class="btn-text">الشجر</span></button>
+      <button onclick="showSection('full')" id="btn-full"><span class="btn-text">سكاكين الخلاط</span></button>
+      <button onclick="showSection('kitchen')" id="btn-kitchen"><span class="btn-text">المطابخ</span></button>
+      <button onclick="showSection('bath')" id="btn-bath"><span class="btn-text">البانيوهات</span></button>
+      <button onclick="showSection('trees')" id="btn-trees"><span class="btn-text">الشجر</span></button>
     </div>
 
     <div id="full" class="section">
-      <h2 id="title-full">طقم كامل</h2>
+      <h2 id="title-full">سكاكين الخلاط</h2>
       <div class="gallery">
         <div class="photo-card"><img src="full1.jpg"><button onclick="order('full1.jpg')"><span class="order-text">طلب الصورة</span></button></div>
         <div class="photo-card"><img src="full2.jpg"><button onclick="order('full2.jpg')"><span class="order-text">طلب الصورة</span></button></div>
@@ -182,16 +179,22 @@
     let currentLang = 'ar';
     const translations = {
       ar: {
-        title: '📸 معرض الصور', home: 'الرئيسية', lang: 'English',
-        btns: ['🧰 طقم كامل', '🍽️ المطابخ', '🛁 البانيوهات', '🌳 الشجر'],
-        sections: ['طقم كامل', 'المطابخ', 'البانيوهات', 'الشجر'],
-        order: 'طلب الصورة', siteName: 'أدواتي الصحية'
+        title: '📸 معرض الصور',
+        home: 'الرئيسية',
+        lang: 'English',
+        btns: ['سكاكين الخلاط', 'المطابخ', 'البانيوهات', 'الشجر'],
+        sections: ['سكاكين الخلاط', 'المطابخ', 'البانيوهات', 'الشجر'],
+        order: 'طلب الصورة',
+        siteName: 'الورشة الفنية'
       },
       en: {
-        title: '📸 Photo Gallery', home: 'Home', lang: 'العربية',
-        btns: ['🧰 Full Set', '🍽️ Kitchens', '🛁 Bathtubs', '🌳 Trees'],
-        sections: ['Full Set', 'Kitchens', 'Bathtubs', 'Trees'],
-        order: 'Order Image', siteName: 'My Sanitary Tools'
+        title: '📸 Photo Gallery',
+        home: 'Home',
+        lang: 'العربية',
+        btns: ['Blender Blades', 'Kitchens', 'Bathtubs', 'Trees'],
+        sections: ['Blender Blades', 'Kitchens', 'Bathtubs', 'Trees'],
+        order: 'Order Image',
+        siteName: 'TECHNICAL WORKSHOP'
       }
     };
 
@@ -206,10 +209,10 @@
       document.getElementById('langBtn').textContent = t.lang;
       document.getElementById('siteName').textContent = t.siteName;
 
-      document.getElementById('btn-full').innerHTML = `${t.btns[0]}`;
-      document.getElementById('btn-kitchen').innerHTML = `${t.btns[1]}`;
-      document.getElementById('btn-bath').innerHTML = `${t.btns[2]}`;
-      document.getElementById('btn-trees').innerHTML = `${t.btns[3]}`;
+      document.getElementById('btn-full').innerHTML = `<span class="btn-text">${t.btns[0]}</span>`;
+      document.getElementById('btn-kitchen').innerHTML = `<span class="btn-text">${t.btns[1]}</span>`;
+      document.getElementById('btn-bath').innerHTML = `<span class="btn-text">${t.btns[2]}</span>`;
+      document.getElementById('btn-trees').innerHTML = `<span class="btn-text">${t.btns[3]}</span>`;
 
       document.getElementById('title-full').textContent = t.sections[0];
       document.getElementById('title-kitchen').textContent = t.sections[1];
