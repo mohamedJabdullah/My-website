@@ -147,8 +147,13 @@
       display: none;
     }
     
-  .ar-link { color: #007bff; }
-.en-link { color: #007bff; }
+ .ar-link, .en-link {
+  color: #007bff;
+  text-decoration: none;
+}
+.ar-link:hover, .en-link:hover {
+  text-decoration: underline;
+}
 
 
   </style>
